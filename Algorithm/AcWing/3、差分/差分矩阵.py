@@ -22,12 +22,13 @@
 2 2 2 2
 """
 
+
 n, m, q = map(int,input().split())
 ll = [None] * (n + 1)
 ll[0] = [0] * (m + 1)
 for i in range(1, n + 1):
-    ll[i] = list(map(int,('0 ' + input()).split()))
-b = [[0] * (m + 2) for i in range(n + 2)]
+    ll[i] = list(map(int, f'0 {input()}'.split()))
+b = [[0] * (m + 2) for _ in range(n + 2)]
 def insert(x1, y1, x2, y2, c):
     b[x1][y1] += c
     b[x2 + 1][y1] -= c

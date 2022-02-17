@@ -64,48 +64,40 @@ class Tree:
         if self.root is None:  # 如果根为空，就什么也不做
             return False
 
-        parent = self.get_parent(item)
-        if parent:
-            del_node = parent.left if parent.left.data == item else parent.right  # 待删除节点
-            if del_node.left is None:
-                if parent.left.data == item:
-                    parent.left = del_node.right
-                else:
-                    parent.right = del_node.right
-                del del_node
-                return True
-            elif del_node.right is None:
-                if parent.left.data == item:
-                    parent.left = del_node.left
-                else:
-                    parent.right = del_node.left
-                del del_node
-                return True
-            else:  # 左右子树都不为空
-                tmp_pre = del_node
-                tmp_next = del_node.right
-                if tmp_next.left is None:
-                    # 替代
-                    tmp_pre.right = tmp_next.right
-                    tmp_next.left = del_node.left
-                    tmp_next.right = del_node.right
-
-                else:
-                    while tmp_next.left:  # 让tmp指向右子树的最后一个叶子
-                        tmp_pre = tmp_next
-                        tmp_next = tmp_next.left
-                    # 替代
-                    tmp_pre.left = tmp_next.right
-                    tmp_next.left = del_node.left
-                    tmp_next.right = del_node.right
-                if parent.left.data == item:
-                    parent.left = tmp_next
-                else:
-                    parent.right = tmp_next
-                del del_node
-                return True
-        else:
+        if not (parent := self.get_parent(item)):
             return False
+        del_node = parent.left if parent.left.data == item else parent.right  # 待删除节点
+        if del_node.left is None:
+            if parent.left.data == item:
+                parent.left = del_node.right
+            else:
+                parent.right = del_node.right
+        elif del_node.right is None:
+            if parent.left.data == item:
+                parent.left = del_node.left
+            else:
+                parent.right = del_node.left
+        else:  # 左右子树都不为空
+            tmp_pre = del_node
+            tmp_next = del_node.right
+            if tmp_next.left is None:
+                # 替代
+                tmp_pre.right = tmp_next.right
+            else:
+                while tmp_next.left:  # 让tmp指向右子树的最后一个叶子
+                    tmp_pre = tmp_next
+                    tmp_next = tmp_next.left
+                # 替代
+                tmp_pre.left = tmp_next.right
+            tmp_next.left = del_node.left
+            tmp_next.right = del_node.right
+
+            if parent.left.data == item:
+                parent.left = tmp_next
+            else:
+                parent.right = tmp_next
+        del del_node
+        return True
 
     def preorder(self, root):
         if not root:

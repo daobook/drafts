@@ -1,6 +1,6 @@
 n, m = map(int, input().split())
-alist = list(map(int,('0 '+ input()).split()))
-b = [0 for i in range(n + 2)]
+alist = list(map(int, f'0 {input()}'.split()))
+b = [0 for _ in range(n + 2)]
 def insert(l, r, c):
     b[l] += c
     b[r + 1] -= c

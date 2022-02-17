@@ -22,6 +22,7 @@
 0
 5
 """
+
 n, m = map(int,input().split())
 nli = []
 origin = []
@@ -35,8 +36,7 @@ while n:
 while m:
     m -= 1
     arr = list(map(int,input().split()))
-    origin.append(arr[0])
-    origin.append(arr[1])
+    origin.extend((arr[0], arr[1]))
     mli.append(arr)
 origin = sorted(list(set(origin)))
 origin_len = len(origin)

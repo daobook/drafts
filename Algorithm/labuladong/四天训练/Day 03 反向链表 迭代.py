@@ -44,10 +44,10 @@ class SingleNode:
             self.appendleft(item)
         elif index >= self.length():
             self.append(item)
-        else:            
+        else:        
             node = Node(item)
             cur = self._head
-            for i in range(index-1):
+            for _ in range(index-1):
                 cur = cur.next
             node.next = cur.next
             cur.next = node
@@ -88,8 +88,7 @@ class SingleNode:
         cur = head
         nxt = head
         while cur.item != another.item:
-        #while cur != another:
-            if cur == head:
+            if cur == nxt:
                 rear = cur
             nxt = cur.next
             cur.next = pre
@@ -104,8 +103,8 @@ class SingleNode:
         pre = None
         cur = head
         nxt = head
-        for i in range(n):
-            if cur == head:
+        for _ in range(n):
+            if cur == nxt:
                 rear = cur
             nxt = cur.next
             cur.next = pre
@@ -120,7 +119,7 @@ class SingleNode:
         pre = None
         cur = head
         nxt = head
-        for i in range(m-1):
+        for _ in range(m-1):
             nxt = cur.next
             pre = cur
             cur = nxt
@@ -143,14 +142,11 @@ class SingleNode:
     @staticmethod
     def reverseKGroup(head,k):
         a = b = head
-        for i in range(k):
+        for _ in range(k):
             if b is None:
                 return head
             b = b.next
-        if b is None:
-            last = SingleNode.reverse(a)
-        else:
-            last = SingleNode.reverse2another(a,b)
+        last = SingleNode.reverse(a) if b is None else SingleNode.reverse2another(a,b)
         a.next = SingleNode.reverseKGroup(b,k)
         return last
     

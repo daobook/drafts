@@ -23,11 +23,12 @@ Q ab
 0
 1
 """
+
 N = 100010
 idx = 0
 str = ['0'] * N
 cnt = [0] * N
-son = [[0] * 26 for i in range(N)]
+son = [[0] * 26 for _ in range(N)]
 
 def insert(str):
     global idx, cnt, son

@@ -29,8 +29,8 @@ def find(x):
     return p[x]
 
 n, m = map(int,input().split())
-p = [i for i in range(n + 1)]
-size = [1 for i in range(n + 1)]
+p = list(range(n + 1))
+size = [1 for _ in range(n + 1)]
 
 while m:
     m -= 1

@@ -44,10 +44,10 @@ class SingleNode:
             self.appendleft(item)
         elif index >= self.length():
             self.append(item)
-        else:            
+        else:        
             node = Node(item)
             cur = self._head
-            for i in range(index-1):
+            for _ in range(index-1):
                 cur = cur.next
             node.next = cur.next
             cur.next = node
@@ -71,7 +71,7 @@ class SingleNode:
 
     @staticmethod
     def reverse(head):
-        if head.next == None:
+        if head.next is None:
             return head
         last = SingleNode.reverse(head.next)
         head.next.next = head

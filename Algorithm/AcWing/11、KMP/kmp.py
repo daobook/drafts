@@ -17,11 +17,12 @@ ababa
 ----------------
 0 2
 """
+
 n = int(input())
-p = list('0 ' + input())
+p = list(f'0 {input()}')
 
 m = int(input())
-s = list('0 ' + input())
+s = list(f'0 {input()}')
 
 ne = [-1] * (n + 1)
 

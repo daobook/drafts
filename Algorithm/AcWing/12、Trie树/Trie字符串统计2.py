@@ -34,7 +34,7 @@ def insert(str):
 def query(str):
     p = root
     for ch in str:
-        if p.get(ch) == None: return 0
+        if p.get(ch) is None: return 0
         p = p[ch]
     return p.get('count', 0)
 

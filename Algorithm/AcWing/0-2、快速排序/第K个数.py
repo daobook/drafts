@@ -14,9 +14,6 @@ def kSort(q, l, r, k):
             if not q[j] > x: break
         if i < j: q[i], q[j] = q[j], q[i]
     length = j - l + 1
-    if k <= length:
-        return kSort(q, l, j, k)
-    else:
-        return kSort(q, j + 1, r, k - length)
+    return kSort(q, l, j, k) if k <= length else kSort(q, j + 1, r, k - length)
 
 print(kSort(alist, 0, n - 1, k))

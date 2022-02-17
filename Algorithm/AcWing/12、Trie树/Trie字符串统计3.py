@@ -34,7 +34,7 @@ def insert(str):
     p = root
     for ch in str:
         u = ord(ch) - ord('a')
-        if p.next[u] == None:
+        if p.next[u] is None:
             p.next[u] = TreeNode()
         p = p.next[u]
     p.val += 1
@@ -43,7 +43,7 @@ def query(str):
     p = root
     for ch in str:
         u = ord(ch) - ord('a')
-        if p.next[u] == None: return 0
+        if p.next[u] is None: return 0
         p = p.next[u]
     return p.val
 

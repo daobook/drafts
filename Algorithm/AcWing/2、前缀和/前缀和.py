@@ -21,6 +21,7 @@
 6
 10
 """
+
 ##n, m = map(int,input().split())
 ##alist = list(map(int,input().split()))
 ##def create(q, n):
@@ -36,9 +37,9 @@
 ##    print(res[r] - res[l - 1])
 
 n, m = map(int,input().split())
-alist = list(map(int,('0 ' + input()).split()))
+alist = list(map(int, f'0 {input()}'.split()))
 def create(q, n):
-    res = [0 for i in range(n + 1)]
+    res = [0 for _ in range(n + 1)]
     for i in range(1,n + 1):
         res[i] = res[i - 1] + q[i]
     return res

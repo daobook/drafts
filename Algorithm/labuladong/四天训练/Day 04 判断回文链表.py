@@ -44,10 +44,10 @@ class SingleNode:
             self.appendleft(item)
         elif index >= self.length():
             self.append(item)
-        else:            
+        else:        
             node = Node(item)
             cur = self._head
-            for i in range(index-1):
+            for _ in range(index-1):
                 cur = cur.next
             node.next = cur.next
             cur.next = node
@@ -94,7 +94,7 @@ def traverse2(right,left):
     
 def isPalindrome2(head):
     left = head
-    return traverse2(head,left)
+    return traverse2(left, left)
 
 
 ln = SingleNode()
